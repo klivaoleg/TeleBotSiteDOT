@@ -28,14 +28,72 @@
         margin-top: 50px;
         margin-bottom: 10px;
     }
+    img{
+        width: 70px;
+        margin: 30px auto;
+    }
+    p {
+        width: 350px;
+        margin: 0 auto;
+    }
+    button{
+        border: 0;
+        border-radius: 5px;
+        margin-top: 50px;
+        height: 60px;
+        width: 200px;
+        font-size: 20px;
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 500ms ease;
+        color: var(--tg-theme-button-color);
+        background: var(--tg-theme-button-text-color);
+    }
+    button:hover{
+        background: var(--tg-theme-secondary-bg-color);
+    }
+    #form{
+        display: none;
+        text-align: center;
+    }
+    input {
+        width: 90%;
+        outline: none;
+        margin: 10px 5%;
+        padding: 15px 10px;
+        font-size: 14px;
+        border: 2px solid silver;
+        border-radius: 5px ;
+    }
+    input:focus{
+        border-color: #db5db5db;
+    }
     </style>
 </head>
 <body>
     <div id="main">
         <h1>Онлайн магазин</h1>
-
+        <img src="https://pixy.org/src2/610/6105108.jpg">
+        <p>Показываем красоту физики, готовим к экзаменам и олимпиадам!</p>
+        <button id="buy">Обо мне</button>
     </div>
+    <form id="form">
+        <input type="text" placeholder="Имя" id="user_name">
+        <input type="text" placeholder="Email" id="user_email">
+        <input type="text" placeholder="Телефон" id="user_phone">
+        <button id="order">Оформить</button>
+    </form>
     <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
-
+    <script>
+        let tg = window.Telegram.WepApp;
+        let buy = document.getElementById('buy');
+        let order = document.getElementById('order');
+        buy.addEventListener("click", ()=>{
+            document.getElementById("main").style.display = "none";
+            document.getElementById("form").style.display = "block";
+            document.getElementById("user_name").value = tg.initDataUnsafe.first_name;
+        })
+    </script>
 </body>
 </html>
